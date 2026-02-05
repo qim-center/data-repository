@@ -1,9 +1,11 @@
 ---
 title: Contact
+description: a short description to the contact page, completely optional
 rss_ignore: true
-layout: prosethis is my imprint, sooo
+layout: prose
 menu:
   footer:
+    name: Contact
     weight: 1
 ---
 
