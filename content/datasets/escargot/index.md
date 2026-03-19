@@ -2,20 +2,14 @@
 title: 'Escargot'
 categories: ["animal", "marine"]
 description: |
-  A detailed description of the dataset.
-  Include:
-  - Object details
-  - Acquisition method
-  - Resolution
-  - Processing steps
-  - Usage notes
+  Snail from a pack of butter filled escargot after being heated. Sample was bought in Denmark. 
 summary: "A type of snail that people eat"
 license: "MIT"
 contributors: ["QIM"]
 
 volumes:
   - format: "zarr"
-    url: "https://platform.qim.dk/qim-public/Escargot/Escargot.zarr"
+    url: "https://platform.qim.dk/qim-public/escargot/escargot.zarr"
   - format: "tiff"
-    url: ""
+    url: "https://platform.qim.dk/qim-public/escargot/escargot.tif"
 ---

@@ -1,6 +1,6 @@
 ---
-title: 'Optical Nerve'
-categories: []
+title: 'Mex Coral'
+categories: ["animal", "marine"]
 description: |
   A detailed description of the dataset.
   Include:
@@ -9,13 +9,13 @@ description: |
   - Resolution
   - Processing steps
   - Usage notes
-summary: "A short overview for gallery view."
+summary: "top part of a staghorn coral. "
 license: ""
 contributors: []
 
 volumes:
   - format: "zarr"
-    url: "https://platform.qim.dk/qim-public/OpticalNerve.zarr"
+    url: "https://platform.qim.dk/qim-public/mex_coral/mex_coral.zarr"
   - format: "tiff"
-    url: ""
+    url: "https://platform.qim.dk/qim-public/mex_coral/mex_coral.tif"
 ---

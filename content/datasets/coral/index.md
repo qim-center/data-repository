@@ -1,6 +1,6 @@
 ---
-title: 'Lentils'
-categories: []
+title: 'Coral'
+categories: ["animal", "marine"]
 description: |
   A detailed description of the dataset.
   Include:
@@ -9,13 +9,13 @@ description: |
   - Resolution
   - Processing steps
   - Usage notes
-summary: "A short overview for gallery view."
+summary: "The top part of a staghorn coral."
 license: ""
 contributors: []
 
 volumes:
   - format: "zarr"
-    url: "https://platform.qim.dk/qim-public/Lentils/lentils.zarr"
+    url: "https://platform.qim.dk/qim-public/coral/coral.zarr"
   - format: "tiff"
-    url: ""
+    url: "https://platform.qim.dk/qim-public/coral/coral.tif"
 ---

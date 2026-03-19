@@ -1,6 +1,5 @@
 ---
 title: About
-description: a short description for our about page
 rss_ignore: true
 layout: prose
 menu:
@@ -9,6 +8,4 @@ menu:
     weight: 99
 ---
 
-The QIM 3D Data Repository is a collection of 3D datasets from µCT scans, and can be freely used.
-
-More text about the page
+The Qim Data Repository is a website developed by the Qim Center aimed to make 3D datasets accessible everyone interested in 3D image analysis.

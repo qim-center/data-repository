@@ -1,6 +1,5 @@
 ---
 title: Contribute
-description: a page for explaining how to contribute
 rss_ignore: true
 layout: prose
 menu:

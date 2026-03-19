@@ -1,5 +1,5 @@
 ---
-title: 'Fibers'
+title: 'Rope'
 categories: ["manufactured"]
 description: |
   A detailed description of the dataset.
@@ -9,13 +9,13 @@ description: |
   - Resolution
   - Processing steps
   - Usage notes
-summary: "A thread of some woven material"
-license: "MIT"
-contributors: ["QIM"]
+summary: "Piece of synthetic rope bought in Denmark. "
+license: ""
+contributors: []
 
 volumes:
   - format: "zarr"
-    url: "https://platform.qim.dk/qim-public/Fibers/fibers.zarr"
+    url: "https://platform.qim.dk/qim-public/rope/rope.zarr"
   - format: "tiff"
-    url: ""
+    url: "https://platform.qim.dk/qim-public/rope/rope.tif"
 ---
