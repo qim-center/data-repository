@@ -6,8 +6,9 @@
       </svg>
     </a>
   {{ else }}
-    <a class="btn" href="{{ .Site.Home.RelPermalink }}">
-      {{ .Site.Title }}
+    {{ $logo := resources.Get "images/Qim-logo_standard-trasparent-background.png" }}
+    <a class="brand-link" href="{{ .Site.Home.RelPermalink }}" aria-label="{{ .Site.Title }}">
+      <img class="brand-logo" src="{{ $logo.RelPermalink }}" alt="{{ .Site.Title }}" width="180" height="40" loading="eager" decoding="async" />
     </a>
   {{ end }}
   {{ if site.Menus.main }}
