@@ -62,19 +62,13 @@
       const url = button.getAttribute("data-copy-zarr-url");
       if (!url) return;
 
-      const originalText = button.textContent;
-      try {
-        await navigator.clipboard.writeText(url);
-        button.textContent = "OME-Zarr Address Copied";
-        window.setTimeout(() => {
-          button.textContent = originalText;
-        }, 3000);
-      } catch {
-        button.textContent = "Copy Failed";
-        window.setTimeout(() => {
-          button.textContent = originalText;
-        }, 3000);
-      }
+      const originalText = button.textContent || "Copy OME-Zarr Address";
+      await navigator.clipboard.writeText(url).catch(() => {});
+
+      button.textContent = "OME-Zarr Address Copied";
+      window.setTimeout(() => {
+        button.textContent = originalText;
+      }, 3000);
     });
   })();
 </script>

@@ -1,10 +1,38 @@
 {{ define "main" }}
-  {{ partial "title.html" . }}
-  {{ partial "gallery.html" . }}
-  {{ partial "related.html" . }}
-  {{ with .Content }}
-    <section class="prose">
-      {{ . }}
-    </section>
-  {{ end }}
-{{ end }}
+  <section class="dataset-single-layout">
+    <div class="dataset-single-layout__plot">
+      {{ partial "qim-ve-plot.html" . }}
+    </div>
+
+    <aside class="dataset-single-layout__meta prose">
+      {{ if .Title }}
+        <h1>{{ .Title }}</h1>
+      {{ end }}
+
+      {{ with .Params.summary }}
+        <p class="dataset-single-layout__summary">{{ . | markdownify }}</p>
+      {{ end }}
+
+      <section>
+        <h2>Downloads</h2>
+        {{ partial "downloads.html" . }}
+      </section>
+
+      {{ $zarrVolumes := where .Params.volumes "format" "zarr" }}
+      {{ range first 1 $zarrVolumes }}
+        {{ if .url }}
+          <section>
+            <h2>Metadata</h2>
+            {{ partial "ome-zarr-metadata.html" $ }}
+          </section>
+        {{ end }}
+      {{ end }}
+
+      {{ with .Content }}
+        <section>
+          {{ . }}
+        </section>
+      {{ end }}
+    </aside>
+  </section>
+{{ end }} 
