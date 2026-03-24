@@ -1,6 +1,7 @@
 ---
 title: '{{ replace .Name "-" " " | title }}'
 categories: []
+summary: "A short summary of the dataset."
 description: |
   A detailed description of the dataset.
   Include:
@@ -9,7 +10,6 @@ description: |
   - Resolution
   - Processing steps
   - Usage notes
-summary: "A short overview for gallery view."
 license: ""
 contributors: []
 
