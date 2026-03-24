@@ -1,0 +1,80 @@
+{{ $zarrUrl := "" }}
+{{ $tiffUrl := "" }}
+
+{{ with .Params.volumes }}
+  {{ range . }}
+    {{ if and (eq .format "zarr") .url (eq $zarrUrl "") }}
+      {{ $zarrUrl = .url }}
+    {{ end }}
+    {{ if and (eq .format "tiff") .url (eq $tiffUrl "") }}
+      {{ $tiffUrl = .url }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+<div class="downloads-actions">
+  {{ if $zarrUrl }}
+    <button
+      type="button"
+      class="btn downloads-action"
+      data-copy-zarr-url="{{ $zarrUrl }}">
+      Copy OME-Zarr Address
+    </button>
+  {{ else }}
+    <button
+      type="button"
+      class="btn downloads-action downloads-action-disabled"
+      disabled
+      aria-disabled="true">
+      OME-Zarr URL Missing
+    </button>
+  {{ end }}
+
+  {{ if $tiffUrl }}
+    <a
+      href="{{ $tiffUrl }}"
+      class="btn downloads-action"
+      download>
+      Download TIFF
+    </a>
+  {{ else }}
+    <button
+      type="button"
+      class="btn downloads-action downloads-action-disabled"
+      disabled
+      aria-disabled="true">
+      TIFF Missing
+    </button>
+  {{ end }}
+</div>
+
+<p class="downloads-guide-text">
+  <a href="{{ "/download-guide/" | relURL }}">OME-Zarr download guide</a>
+</p>
+
+<script>
+  (() => {
+    const root = document.currentScript?.parentElement;
+    const button = root?.querySelector(".downloads-actions [data-copy-zarr-url]");
+    if (!button || !navigator.clipboard?.writeText) return;
+
+    button.addEventListener("click", async () => {
+      const url = button.getAttribute("data-copy-zarr-url");
+      if (!url) return;
+
+      const originalText = button.textContent;
+      try {
+        await navigator.clipboard.writeText(url);
+        button.textContent = "OME-Zarr Address Copied";
+        window.setTimeout(() => {
+          button.textContent = originalText;
+        }, 3000);
+      } catch {
+        button.textContent = "Copy Failed";
+        window.setTimeout(() => {
+          button.textContent = originalText;
+        }, 3000);
+      }
+    });
+  })();
+</script>

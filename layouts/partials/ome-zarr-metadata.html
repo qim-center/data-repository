@@ -1,0 +1,149 @@
+{{ $zarrUrl := "" }}
+
+{{ with .Params.volumes }}
+	{{ range . }}
+		{{ if and (eq .format "zarr") .url (eq $zarrUrl "") }}
+			{{ $zarrUrl = .url }}
+		{{ end }}
+	{{ end }}
+{{ end }}
+
+{{ if $zarrUrl }}
+	<div class="ome-zarr-metadata" data-ome-zarr-url="{{ $zarrUrl }}">
+		<p>
+			Validate this dataset in the
+			<a href="https://ome.github.io/ome-ngff-validator/?source={{ $zarrUrl | urlquery }}">
+				OME NGFF Validator
+			</a>.
+		</p>
+
+		<ul data-ome-zarr-list>
+			<li>Loading OME-Zarr v3 metadata...</li>
+		</ul>
+	</div>
+
+	<script>
+		(() => {
+			const container = document.currentScript?.previousElementSibling;
+			if (!container) return;
+
+			const list = container.querySelector("[data-ome-zarr-list]");
+			const zarrUrl = container.getAttribute("data-ome-zarr-url");
+			if (!list || !zarrUrl) return;
+
+			const baseUrl = zarrUrl.replace(/\/+$/, "");
+
+			const addItem = (label, value) => {
+				if (!value && value !== 0) return;
+				const item = document.createElement("li");
+				const strong = document.createElement("strong");
+				strong.textContent = `${label}: `;
+				item.appendChild(strong);
+				item.append(document.createTextNode(String(value)));
+				list.appendChild(item);
+			};
+
+			const formatArray = (value) => {
+				if (!Array.isArray(value) || value.length === 0) return "";
+				return value.join(" x ");
+			};
+
+			const product = (values) => {
+				if (!Array.isArray(values) || values.length === 0) return 0;
+				return values.reduce((acc, value) => acc * Number(value), 1);
+			};
+
+			const ceilDiv = (a, b) => Math.ceil(Number(a) / Number(b));
+
+			const dataTypeBytes = (dataType) => {
+				const sizes = {
+					bool: 1,
+					int8: 1,
+					uint8: 1,
+					int16: 2,
+					uint16: 2,
+					int32: 4,
+					uint32: 4,
+					int64: 8,
+					uint64: 8,
+					float16: 2,
+					float32: 4,
+					float64: 8,
+					complex64: 8,
+					complex128: 16
+				};
+				return sizes[dataType] || 0;
+			};
+
+			const formatBytes = (bytes) => {
+				if (!Number.isFinite(bytes) || bytes <= 0) return "";
+				const units = ["B", "KiB", "MiB", "GiB", "TiB"];
+				let value = bytes;
+				let unitIndex = 0;
+				while (value >= 1000 && unitIndex < units.length - 1) {
+					value /= 1000;
+					unitIndex += 1;
+				}
+				const fixed = value >= 100 ? 0 : value >= 10 ? 1 : 2;
+				return `${value.toFixed(fixed)} ${units[unitIndex]}`;
+			};
+
+			const fetchJson = async (url) => {
+				const response = await fetch(url);
+				if (!response.ok) {
+					throw new Error(`Failed to read ${url}`);
+				}
+				return response.json();
+			};
+
+			const loadMetadata = async () => {
+				try {
+					const root = await fetchJson(`${baseUrl}/zarr.json`);
+					const ome = root && root.attributes && root.attributes.ome;
+					const multiscale = ome && Array.isArray(ome.multiscales) ? ome.multiscales[0] : null;
+					const datasets = multiscale && Array.isArray(multiscale.datasets) ? multiscale.datasets : [];
+					const firstPath = datasets.length > 0 ? datasets[0].path : "s0";
+
+					while (list.children.length > 0) {
+						list.removeChild(list.lastChild);
+					}
+
+					const firstLevel = await fetchJson(`${baseUrl}/${firstPath}/zarr.json`);
+					const shape = Array.isArray(firstLevel.shape) ? firstLevel.shape : [];
+					const dataType = firstLevel.data_type;
+
+					const chunkShape = firstLevel
+						&& firstLevel.chunk_grid
+						&& firstLevel.chunk_grid.configuration
+						&& firstLevel.chunk_grid.configuration.chunk_shape;
+					const chunkCountsByAxis = Array.isArray(chunkShape) && chunkShape.length === shape.length
+						? shape.map((size, index) => ceilDiv(size, chunkShape[index]))
+						: [];
+
+					const bytesPerElement = dataTypeBytes(dataType);
+					const fullSizeBytes = product(shape) * bytesPerElement;
+					const chunkSizeBytes = product(chunkShape) * bytesPerElement;
+					const totalChunkCount = product(chunkCountsByAxis);
+
+					addItem("Zarr format", root.zarr_format);
+					addItem("Multiscale levels", datasets.length);
+					addItem("Data type", dataType);
+					addItem("Shape", formatArray(shape));
+					addItem("Shape (in chunks)", formatArray(chunkCountsByAxis));
+					addItem("Chunk size", `${formatArray(chunkShape)} (${formatBytes(chunkSizeBytes)})`);
+					addItem("Chunk count", totalChunkCount);
+					addItem("Full size", formatBytes(fullSizeBytes));
+				} catch (error) {
+					while (list.children.length > 0) {
+						list.removeChild(list.lastChild);
+					}
+					addItem("Metadata", "Unable to load remote OME-Zarr metadata");
+				}
+			};
+
+			void loadMetadata();
+		})();
+	</script>
+{{ else }}
+	<p>OME-Zarr URL is not available for this dataset.</p>
+{{ end }}

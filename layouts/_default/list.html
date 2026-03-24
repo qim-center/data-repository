@@ -1,7 +1,7 @@
 {{ define "main" }}
   {{ partial "title.html" . }}
   <section class="galleries">
-    {{ range where .Pages "Params.private" "ne" true }}
+    {{ range where .RegularPagesRecursive "Params.private" "ne" true }}
       {{ partial "album-card.html" . }}
     {{ end }}
   </section>

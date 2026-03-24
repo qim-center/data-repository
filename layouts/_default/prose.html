@@ -1,7 +1,7 @@
 {{ define "main" }}
   {{ partial "title.html" . }}
   {{ with .Content }}
-    <section class="prose">
+    <section class="prose prose-markdown">
       {{ . }}
     </section>
   {{ end }}

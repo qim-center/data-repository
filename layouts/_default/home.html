@@ -3,8 +3,10 @@
   {{ partial "categories.html" }}
   {{ partial "featured.html" . }}
   <section class="galleries">
-    {{ range where .Pages "Params.private" "ne" true }}
-      {{ partial "album-card.html" . }}
+    {{ with site.GetPage "section" "datasets" }}
+      {{ range where .RegularPagesRecursive "Params.private" "ne" true }}
+        {{ partial "album-card.html" . }}
+      {{ end }}
     {{ end }}
   </section>
 {{ end }}

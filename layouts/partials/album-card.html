@@ -1,11 +1,64 @@
 {{ $gallery := partial "get-gallery.html" . }}
 {{ with $gallery }}
-  <a class="card" href="{{ .page.RelPermalink }}" title="{{ .page.Title }}">
-    <figure style="background-color: {{ .color }}">
-      <img class="lazyload" width="{{ .thumbnail.Width }}" height="{{ .thumbnail.Height }}" data-src="{{ .thumbnail.RelPermalink }}" alt="{{ .page.Title }}" />
-    </figure>
+  {{ $vizViewerBaseUrl := index site.Params "viz-base-url" | default "https://viz.qim.dk/public/" }}
+  {{ $zarrUrl := "" }}
+  {{ $metadataTags := slice }}
+  {{ with .page.Params.volumes }}
+    {{ range . }}
+      {{ if and (eq .format "zarr") .url (eq $zarrUrl "") }}
+        {{ $zarrUrl = .url }}
+      {{ end }}
+      {{ if and .format .url }}
+        {{ $label := upper .format }}
+        {{ with partial "volume-size.html" (dict "format" .format "url" .url) }}
+          {{ $label = printf "%s %s" $label . }}
+        {{ end }}
+        {{ $metadataTags = $metadataTags | append $label }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ $metadataTags = uniq $metadataTags }}
+  <article class="card" categories="{{ .page.Params.Categories }}">
+    <a class="card-main-link" href="{{ .page.RelPermalink }}" title="{{ .page.Title }}">
+      <figure style="background-color: {{ .color }}">
+        {{ with .thumbnail }}
+          <img class="lazyload" width="{{ .Width }}" height="{{ .Height }}" data-src="{{ .RelPermalink }}" alt="{{ $.Title }}" />
+        {{ else }}
+          {{ with $zarrUrl }}
+            <iframe
+              src="{{ printf "%s?src=%s&scale=last&hidden=true&turntable=true" $vizViewerBaseUrl (. | urlquery) }}"
+              style="display:block; width:100%; height:100%; border:0;"
+              loading="lazy"
+              allowfullscreen>
+            </iframe>
+          {{ else }}
+            <div class="card-placeholder">No preview available</div>
+          {{ end }}
+        {{ end }}
+      </figure>
+    </a>
     <div>
-      <h2>{{ .page.Title }}</h2>
+      <h2><a class="card-title-link" href="{{ .page.RelPermalink }}">{{ .page.Title }}</a></h2>
+      <div class="card-tags">
+        {{ with .page.GetTerms "categories" }}
+          <nav class="categories card-categories">
+            <ul>
+              {{ range . }}
+                <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+              {{ end }}
+            </ul>
+          </nav>
+        {{ end }}
+        {{ with $metadataTags }}
+          <nav class="card-metadata" aria-label="Available file formats">
+            <ul>
+              {{ range . }}
+                <li><span>{{ . }}</span></li>
+              {{ end }}
+            </ul>
+          </nav>
+        {{ end }}
+      </div>
       <p>
         {{ if gt .albumCount 0 }}
           {{ T "albumCount" (dict "count" (.albumCount | lang.FormatNumber 0) "photoCount" (.imageCount | lang.FormatNumber 0 | lang.Translate "photoCount")) }}
@@ -14,5 +67,5 @@
         {{ end }}
       </p>
     </div>
-  </a>
+  </article>
 {{ end }}
