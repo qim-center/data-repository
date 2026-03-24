@@ -1,0 +1,71 @@
+{{ $format := lower (.format | default "") }}
+{{ $url := .url | default "" }}
+{{ $result := "" }}
+{{ if and (eq $format "zarr") $url }}
+  {{ $baseUrl := replaceRE "/+$" "" $url }}
+  {{ $bytesPerElement := 0 }}
+  {{ $elementCount := 0 }}
+
+  {{/* Try Zarr v3: s0/zarr.json — data_type is a string like "float32" (bits) */}}
+  {{ $v3Path := printf "%s/s0/zarr.json" $baseUrl }}
+  {{ with try (resources.GetRemote $v3Path) }}
+    {{ with .Value }}
+      {{ with transform.Unmarshal .Content }}
+        {{ $dataType := lower (printf "%v" (index . "data_type" | default "")) }}
+        {{ $bitToken := replaceRE "^.*?([0-9]+)$" "$1" $dataType }}
+        {{ if ne $bitToken $dataType }}
+          {{ $bits := int $bitToken }}
+          {{ if gt $bits 0 }}
+            {{ $bytesPerElement = div $bits 8 }}
+          {{ end }}
+        {{ end }}
+
+        {{ $shape := index . "shape" }}
+        {{ with $shape }}
+          {{ $elementCount = 1 }}
+          {{ range . }}
+            {{ $elementCount = mul $elementCount (int .) }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+  {{/* Fall back to Zarr v2: 0/.zarray — dtype is like "<f4" (bytes) */}}
+  {{ if or (eq $bytesPerElement 0) (eq $elementCount 0) }}
+    {{ $v2Path := printf "%s/0/.zarray" $baseUrl }}
+    {{ with try (resources.GetRemote $v2Path) }}
+      {{ with .Value }}
+        {{ with transform.Unmarshal .Content }}
+          {{ $dtype := lower (printf "%v" (index . "dtype" | default "")) }}
+          {{ $byteToken := replaceRE "^.*?([0-9]+)$" "$1" $dtype }}
+          {{ if ne $byteToken $dtype }}
+            {{ $bytesPerElement = int $byteToken }}
+          {{ end }}
+
+          {{ $shape := index . "shape" }}
+          {{ with $shape }}
+            {{ $elementCount = 1 }}
+            {{ range . }}
+              {{ $elementCount = mul $elementCount (int .) }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+  {{ if and (gt $bytesPerElement 0) (gt $elementCount 0) }}
+    {{ $totalBytes := mul $elementCount $bytesPerElement }}
+    {{ if ge $totalBytes 1073741824 }}
+      {{ $result = printf "%.2f GB" (div (float $totalBytes) 1000000000.0) }}
+    {{ else if ge $totalBytes 1048576 }}
+      {{ $result = printf "%.2f MB" (div (float $totalBytes) 1000000.0) }}
+    {{ else if ge $totalBytes 1024 }}
+      {{ $result = printf "%.2f KB" (div (float $totalBytes) 1000.0) }}
+    {{ else }}
+      {{ $result = printf "%.2f B" (float $totalBytes) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{- $result -}}

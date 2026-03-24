@@ -1,0 +1,7 @@
+baseURL = 'https://localhost/'
+languageCode = 'en-us'
+title = 'Qim Data Repository'
+
+[params]
+  defaultTheme = 'light'
+#  viz-base-url = 'http://localhost:5173/public/index.html'

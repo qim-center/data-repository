@@ -1,0 +1,21 @@
+{{ $vizViewerBaseUrl := index site.Params "viz-base-url" | default "https://viz.qim.dk/public/" }}
+{{ $zarrVolumes := where .Params.volumes "format" "zarr" }}
+{{ $hasZarrUrl := false }}
+{{ range first 1 $zarrVolumes }}
+  {{ if .url }}
+    {{ $hasZarrUrl = true }}
+    <div class="dataset-plot-frame">
+      <iframe
+        src="{{ printf "%s?src=%s" $vizViewerBaseUrl (.url | urlquery) }}"
+        style="display:block; width:100%; height:100%; border:0;"
+        loading="lazy"
+        allowfullscreen>
+      </iframe>
+    </div>
+  {{ end }}
+{{ end }}
+{{ if not $hasZarrUrl }}
+  <div class="dataset-plot-frame dataset-plot-frame--empty">
+    <p>No OME-Zarr available for this dataset.</p>
+  </div>
+{{ end }}
