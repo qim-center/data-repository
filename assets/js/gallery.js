@@ -45,5 +45,4 @@ if (gallery) {
 
   // Call twice to adjust for scrollbars appearing after first call
   updateGallery();
-  updateGallery();
 }
