@@ -19,24 +19,39 @@
   {{ end }}
   {{ $metadataTags = uniq $metadataTags }}
   <article class="card" categories="{{ .page.Params.Categories }}">
-    <a class="card-main-link" href="{{ .page.RelPermalink }}" title="{{ .page.Title }}">
-      <figure style="background-color: {{ .color }}">
-        {{ with .thumbnail }}
-          <img class="lazyload" width="{{ .Width }}" height="{{ .Height }}" data-src="{{ .RelPermalink }}" alt="{{ $.Title }}" />
-        {{ else }}
-          {{ with $zarrUrl }}
+    <figure style="background-color: {{ .color }}">
+      {{ with .thumbnail }}
+        <img class="lazyload" width="{{ .Width }}" height="{{ .Height }}" data-src="{{ .RelPermalink }}" alt="{{ $.Title }}" />
+      {{ else }}
+        {{ with $zarrUrl }}
+          {{ $cardViewerSrc := printf "%s?src=%s&scale=last&hidden=true&turntable=true" $vizViewerBaseUrl (. | urlquery) }}
+          <iframe
+            class="card-preview-iframe"
+            data-card-iframe-src="{{ $cardViewerSrc }}"
+            style="display:block; width:100%; height:100%; border:0;"
+            loading="lazy"
+            allowfullscreen>
+          </iframe>
+          <noscript>
             <iframe
-              src="{{ printf "%s?src=%s&scale=last&hidden=true&turntable=true" $vizViewerBaseUrl (. | urlquery) }}"
+              src="{{ $cardViewerSrc }}"
               style="display:block; width:100%; height:100%; border:0;"
               loading="lazy"
               allowfullscreen>
             </iframe>
-          {{ else }}
-            <div class="card-placeholder">No preview available</div>
-          {{ end }}
+          </noscript>
+        {{ else }}
+          <div class="card-placeholder">No preview available</div>
         {{ end }}
-      </figure>
-    </a>
+      {{ end }}
+
+      <a
+        class="card-view-dataset-button"
+        href="{{ .page.RelPermalink }}"
+        aria-label="View dataset: {{ .page.Title }}">
+        View dataset
+      </a>
+    </figure>
     <div>
       <h2><a class="card-title-link" href="{{ .page.RelPermalink }}">{{ .page.Title }}</a></h2>
       <div class="card-tags">
