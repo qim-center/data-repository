@@ -3,7 +3,9 @@
 <html class="{{- if (eq $theme "light") -}}light{{- else if (eq $theme "dark") }}dark{{ end }}" lang="{{- site.LanguageCode | default "en" -}}">
   {{ partial "head.html" . }}
   <body>
-    {{ block "header" . }}{{ partial "header.html" . }}{{ end }}
+    <div class="site-header-shell">
+      {{ block "header" . }}{{ partial "header.html" . }}{{ end }}
+    </div>
     <main>
       {{ block "main" . }}{{ end }}
     </main>

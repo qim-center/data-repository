@@ -14,7 +14,6 @@
       {{ end }}
 
       <section>
-        <h2>Downloads</h2>
         {{ partial "downloads.html" . }}
       </section>
 
@@ -22,7 +21,7 @@
       {{ range first 1 $zarrVolumes }}
         {{ if .url }}
           <section>
-            <h2>Metadata</h2>
+            <h3>Metadata</h3>
             {{ partial "ome-zarr-metadata.html" $ }}
           </section>
         {{ end }}
