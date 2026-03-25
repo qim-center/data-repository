@@ -25,12 +25,22 @@
           <img class="lazyload" width="{{ .Width }}" height="{{ .Height }}" data-src="{{ .RelPermalink }}" alt="{{ $.Title }}" />
         {{ else }}
           {{ with $zarrUrl }}
+            {{ $cardViewerSrc := printf "%s?src=%s&scale=last&hidden=true&turntable=true" $vizViewerBaseUrl (. | urlquery) }}
             <iframe
-              src="{{ printf "%s?src=%s&scale=last&hidden=true&turntable=true" $vizViewerBaseUrl (. | urlquery) }}"
+              class="card-preview-iframe"
+              data-card-iframe-src="{{ $cardViewerSrc }}"
               style="display:block; width:100%; height:100%; border:0;"
               loading="lazy"
               allowfullscreen>
             </iframe>
+            <noscript>
+              <iframe
+                src="{{ $cardViewerSrc }}"
+                style="display:block; width:100%; height:100%; border:0;"
+                loading="lazy"
+                allowfullscreen>
+              </iframe>
+            </noscript>
           {{ else }}
             <div class="card-placeholder">No preview available</div>
           {{ end }}
