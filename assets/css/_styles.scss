@@ -15,8 +15,10 @@ body {
 
 body > header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem 1.5rem;
   padding: 0.5rem;
   margin-bottom: 2rem;
   width: 100%;
@@ -28,24 +30,6 @@ body > header {
 
   ul {
     display: inline-flex;
-  }
-
-  .btn {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0.5rem;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    height: 3rem;
-    font-weight: 600;
-    font-size: 1.25rem;
-    user-select: none;
-  }
-
-  .btn-square {
-    padding: 0;
-    width: 3rem;
   }
 
   .brand-link {
@@ -63,29 +47,48 @@ body > header {
       height: 2.25rem;
     }
   }
-}
 
-body > menu {
-  margin: 0 auto 5rem;
-  padding-right: 1.5rem;
-  padding-left: 1.5rem;
-  width: 100%;
-  max-width: 768px;
-  color: var(--text-2);
-  font-weight: 600;
-  font-size: 1.25rem;
-  line-height: 1.4;
-  user-select: none;
-  text-align: center;
+  .site-menu {
+    margin-left: auto;
+    color: var(--text-2);
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.4;
+    user-select: none;
+  }
 
-  a {
-    display: block;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+  .site-menu ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.5rem 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .site-menu a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0.25rem 0;
 
     &:hover,
     &[aria-current="true"] {
       color: var(--text-1);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .site-menu {
+      margin-left: 0;
+      width: 100%;
+      font-size: 1.125rem;
+    }
+
+    .site-menu ul {
+      justify-content: flex-start;
+      gap: 0.5rem 1rem;
     }
   }
 }
@@ -549,15 +552,6 @@ section.gallery {
   display: none;
 }
 
-#menu-toggle[aria-expanded="true"] {
-  .icon-menu {
-    display: none;
-  }
-
-  .icon-close {
-    display: block;
-  }
-}
 
 section.social-icons {
   display: flex;
