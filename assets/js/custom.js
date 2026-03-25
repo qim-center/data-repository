@@ -3,6 +3,7 @@
 const CARD_IFRAME_MAX_CONCURRENT_LOADS = 3;
 const CARD_IFRAME_ROOT_MARGIN = "300px 0px";
 const CARD_IFRAME_UNLOAD_ROOT_MARGIN = "1200px 0px";
+const CARD_IFRAME_LOAD_TIMEOUT_MS = 15000;
 
 function initCardIframeQueue() {
 	const cardIframes = Array.from(document.querySelectorAll("iframe[data-card-iframe-src]"));
@@ -66,18 +67,28 @@ function initCardIframeQueue() {
 			iframe.dataset.cardIframeState = "loading";
 			activeLoads += 1;
 
+			let finished = false;
+			let loadTimeoutId = null;
 			const finishLoad = () => {
-				if (iframe.dataset.cardIframeState !== "loading") {
+				if (finished) {
 					return;
 				}
+				finished = true;
 
-				iframe.dataset.cardIframeState = "done";
+				if (loadTimeoutId !== null) {
+					window.clearTimeout(loadTimeoutId);
+				}
+
+				if (iframe.dataset.cardIframeState === "loading") {
+					iframe.dataset.cardIframeState = "done";
+				}
 				activeLoads = Math.max(0, activeLoads - 1);
 				pumpQueue();
 			};
 
 			iframe.addEventListener("load", finishLoad, { once: true });
 			iframe.addEventListener("error", finishLoad, { once: true });
+			loadTimeoutId = window.setTimeout(finishLoad, CARD_IFRAME_LOAD_TIMEOUT_MS);
 			iframe.src = src;
 		}
 	};
