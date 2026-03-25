@@ -10,15 +10,17 @@
 
 {{ if $zarrUrl }}
 	<div class="ome-zarr-metadata" data-ome-zarr-url="{{ $zarrUrl }}">
-		<p>
+		<p class="ome-zarr-metadata__intro">
 			Validate this dataset in the
-			<a href="https://ome.github.io/ome-ngff-validator/?source={{ $zarrUrl | urlquery }}">
+			<a class="ome-zarr-metadata__validator-link" href="https://ome.github.io/ome-ngff-validator/?source={{ $zarrUrl | urlquery }}">
 				OME NGFF Validator
 			</a>.
 		</p>
 
-		<ul data-ome-zarr-list>
-			<li>Loading OME-Zarr v3 metadata...</li>
+		<ul class="ome-zarr-metadata__list" data-ome-zarr-list>
+			<li class="ome-zarr-metadata__item">
+				<span class="ome-zarr-metadata__value">Loading OME-Zarr v3 metadata...</span>
+			</li>
 		</ul>
 	</div>
 
@@ -36,10 +38,17 @@
 			const addItem = (label, value) => {
 				if (!value && value !== 0) return;
 				const item = document.createElement("li");
-				const strong = document.createElement("strong");
-				strong.textContent = `${label}: `;
-				item.appendChild(strong);
-				item.append(document.createTextNode(String(value)));
+				item.className = "ome-zarr-metadata__item";
+				if (label) {
+					const strong = document.createElement("strong");
+					strong.className = "ome-zarr-metadata__label";
+					strong.textContent = `${label}: `;
+					item.appendChild(strong);
+				}
+				const valueNode = document.createElement("span");
+				valueNode.className = "ome-zarr-metadata__value";
+				valueNode.textContent = String(value);
+				item.appendChild(valueNode);
 				list.appendChild(item);
 			};
 
@@ -145,5 +154,5 @@
 		})();
 	</script>
 {{ else }}
-	<p>OME-Zarr URL is not available for this dataset.</p>
+	<p class="ome-zarr-metadata ome-zarr-metadata--empty">OME-Zarr URL is not available for this dataset.</p>
 {{ end }}

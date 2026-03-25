@@ -794,6 +794,47 @@ nav.card-metadata {
   }
 }
 
+.ome-zarr-metadata {
+  margin-top: 1.5rem;
+}
+
+.ome-zarr-metadata__intro {
+  margin: 0 0 0.75rem;
+  color: var(--text-2);
+  font-size: 0.95rem;
+}
+
+.ome-zarr-metadata__validator-link {
+  color: var(--text-1);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.ome-zarr-metadata__list {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.9rem;
+  line-height: 1.0rem;
+}
+
+.ome-zarr-metadata__item + .ome-zarr-metadata__item {
+  margin-top: 0.35rem;
+}
+
+.ome-zarr-metadata__label {
+  color: var(--text-1);
+}
+
+.ome-zarr-metadata__value {
+  color: var(--text-2);
+}
+
+.ome-zarr-metadata--empty {
+  margin-top: 1.5rem;
+  color: var(--text-2);
+}
+
 .downloads-actions {
   display: flex;
   flex-flow: row wrap;
