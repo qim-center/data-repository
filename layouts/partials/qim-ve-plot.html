@@ -1,4 +1,4 @@
-{{ $vizViewerBaseUrl := index site.Params "viz-base-url" | default "https://viz.qim.dk/public/" }}
+{{ $vizViewerBaseUrl := index site.Params "viz-base-url" | default "https://viz.qim.dk/" }}
 {{ $zarrVolumes := where .Params.volumes "format" "zarr" }}
 {{ $hasZarrUrl := false }}
 {{ range first 1 $zarrVolumes }}

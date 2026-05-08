@@ -1,6 +1,6 @@
 {{ $gallery := partial "get-gallery.html" . }}
 {{ with $gallery }}
-  {{ $vizViewerBaseUrl := index site.Params "viz-base-url" | default "https://viz.qim.dk/public/" }}
+  {{ $vizViewerBaseUrl := index site.Params "viz-base-url" | default "https://viz.qim.dk/" }}
   {{ $zarrUrl := "" }}
   {{ $metadataTags := slice }}
   {{ with .page.Params.volumes }}
