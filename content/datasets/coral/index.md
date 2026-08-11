@@ -15,7 +15,7 @@ contributors: []
 
 volumes:
   - format: "zarr"
-    url: "https://platform.qim.dk/qim-public/coral/coral.zarr"
+    url: "https://public.qim.dk/coral/coral.zarr"
   - format: "tiff"
-    url: "https://platform.qim.dk/qim-public/coral/coral.tif"
+    url: "https://public.qim.dk/coral/coral.tif"
 ---

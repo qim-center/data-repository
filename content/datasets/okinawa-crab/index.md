@@ -15,7 +15,7 @@ contributors: []
 
 volumes:
   - format: "zarr"
-    url: "https://platform.qim.dk/qim-public/okinawa_crab/okinawa_crab.zarr"
+    url: "https://public.qim.dk/okinawa_crab/okinawa_crab.zarr"
   - format: "tiff"
-    url: "https://platform.qim.dk/qim-public/okinawa_crab/okinawa_crab.tif"
+    url: "https://public.qim.dk/okinawa_crab/okinawa_crab.tif"
 ---

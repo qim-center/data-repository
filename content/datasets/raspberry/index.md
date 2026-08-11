@@ -15,7 +15,7 @@ contributors: []
 
 volumes:
   - format: "zarr"
-    url: "https://platform.qim.dk/qim-public/raspberry/raspberry.zarr"
+    url: "https://public.qim.dk/raspberry/raspberry.zarr"
   - format: "tiff"
-    url: "https://platform.qim.dk/qim-public/raspberry/raspberry.tif"
+    url: "https://public.qim.dk/raspberry/raspberry.tif"
 ---

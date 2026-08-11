@@ -15,7 +15,7 @@ contributors: []
 
 volumes:
   - format: "zarr"
-    url: "https://platform.qim.dk/qim-public/deer_mandibule/deer_mandibule.zarr"
+    url: "https://public.qim.dk/deer_mandibule/deer_mandibule.zarr"
   - format: "tiff"
-    url: "https://platform.qim.dk/qim-public/deer_mandibule/deer_mandibule.tif"
+    url: "https://public.qim.dk/deer_mandibule/deer_mandibule.tif"
 ---

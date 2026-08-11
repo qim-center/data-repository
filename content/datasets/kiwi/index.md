@@ -15,7 +15,7 @@ contributors: []
 
 volumes:
   - format: "zarr"
-    url: "https://platform.qim.dk/qim-public/kiwi/kiwi.zarr"
+    url: "https://public.qim.dk/kiwi/kiwi.zarr"
   - format: "tiff"
-    url: "https://platform.qim.dk/qim-public/kiwi/kiwi.tif"
+    url: "https://public.qim.dk/kiwi/kiwi.tif"
 ---

@@ -15,7 +15,7 @@ contributors: []
 
 volumes:
   - format: "zarr"
-    url: "https://platform.qim.dk/qim-public/cowry_shell/cowry_shell.zarr"
+    url: "https://public.qim.dk/cowry_shell/cowry_shell.zarr"
   - format: "tiff"
-    url: "https://platform.qim.dk/qim-public/cowry_shell/cowry_shell.tif"
+    url: "https://public.qim.dk/cowry_shell/cowry_shell.tif"
 ---

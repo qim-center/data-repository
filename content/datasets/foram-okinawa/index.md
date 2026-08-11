@@ -15,7 +15,7 @@ contributors: []
 
 volumes:
   - format: "zarr"
-    url: "https://platform.qim.dk/qim-public/foram_okinawa/foram_okinawa.zarr"
+    url: "https://public.qim.dk/foram_okinawa/foram_okinawa.zarr"
   - format: "tiff"
-    url: "https://platform.qim.dk/qim-public/foram_okinawa/foram_okinawa.tif"
+    url: "https://public.qim.dk/foram_okinawa/foram_okinawa.tif"
 ---

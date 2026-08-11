@@ -15,7 +15,7 @@ contributors: []
 
 volumes:
   - format: "zarr"
-    url: "https://platform.qim.dk/qim-public/loofah/loofah.zarr"
+    url: "https://public.qim.dk/loofah/loofah.zarr"
   - format: "tiff"
-    url: "https://platform.qim.dk/qim-public/loofah/loofah.tif"
+    url: "https://public.qim.dk/loofah/loofah.tif"
 ---

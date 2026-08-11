@@ -15,7 +15,7 @@ contributors: []
 
 volumes:
   - format: "zarr"
-    url: "https://platform.qim.dk/qim-public/rope/rope.zarr"
+    url: "https://public.qim.dk/rope/rope.zarr"
   - format: "tiff"
-    url: "https://platform.qim.dk/qim-public/rope/rope.tif"
+    url: "https://public.qim.dk/rope/rope.tif"
 ---

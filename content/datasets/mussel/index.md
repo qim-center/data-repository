@@ -15,7 +15,7 @@ contributors: []
 
 volumes:
   - format: "zarr"
-    url: "https://platform.qim.dk/qim-public/mussel/mussel.zarr"
+    url: "https://public.qim.dk/mussel/mussel.zarr"
   - format: "tiff"
-    url: "https://platform.qim.dk/qim-public/mussel/mussel.tif"
+    url: "https://public.qim.dk/mussel/mussel.tif"
 ---

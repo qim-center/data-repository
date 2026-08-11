@@ -15,7 +15,7 @@ contributors: []
 
 volumes:
   - format: "zarr"
-    url: "https://platform.qim.dk/qim-public/mex_coral/mex_coral.zarr"
+    url: "https://public.qim.dk/mex_coral/mex_coral.zarr"
   - format: "tiff"
-    url: "https://platform.qim.dk/qim-public/mex_coral/mex_coral.tif"
+    url: "https://public.qim.dk/mex_coral/mex_coral.tif"
 ---

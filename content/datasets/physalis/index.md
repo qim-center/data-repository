@@ -15,7 +15,7 @@ contributors: []
 
 volumes:
   - format: "zarr"
-    url: "https://platform.qim.dk/qim-public/physalis/physalis.zarr"
+    url: "https://public.qim.dk/physalis/physalis.zarr"
   - format: "tiff"
-    url: "https://platform.qim.dk/qim-public/physalis/physalis.tif"
+    url: "https://public.qim.dk/physalis/physalis.tif"
 ---

@@ -38,7 +38,7 @@ import qim3d
 downloader = qim3d.io.Downloader()
 
 escargot_path = downloader(
-    url="https://platform.qim.dk/qim-public/escargot/escargot.zarr",
+    url="https://public.qim.dk/escargot/escargot.zarr",
     output_dir="downloads",
     load_file=False,
 )
@@ -58,7 +58,7 @@ import qim3d
 downloader = qim3d.io.Downloader()
 
 escargot = downloader(
-    url="https://platform.qim.dk/qim-public/escargot/escargot.zarr",
+    url="https://public.qim.dk/escargot/escargot.zarr",
     output_dir="downloads",
     load_file=True,
     virtual_stack=True,

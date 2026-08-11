@@ -15,7 +15,7 @@ contributors: []
 
 volumes:
   - format: "zarr"
-    url: "https://platform.qim.dk/qim-public/coal_briquette/coal_briquette.zarr"
+    url: "https://public.qim.dk/coal_briquette/coal_briquette.zarr"
   - format: "tiff"
-    url: "https://platform.qim.dk/qim-public/coal_briquette/coal_briquette.tif"
+    url: "https://public.qim.dk/coal_briquette/coal_briquette.tif"
 ---

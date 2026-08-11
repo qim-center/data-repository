@@ -17,5 +17,5 @@ volumes:
   - format: "zarr"
     url: ""
   - format: "tiff"
-    url: "https://platform.qim.dk/qim-public/oak_branch/oak_branch.tif"
+    url: "https://public.qim.dk/oak_branch/oak_branch.tif"
 ---

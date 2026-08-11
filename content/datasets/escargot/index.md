@@ -9,7 +9,7 @@ contributors: ["QIM"]
 
 volumes:
   - format: "zarr"
-    url: "https://platform.qim.dk/qim-public/escargot/escargot.zarr"
+    url: "https://public.qim.dk/escargot/escargot.zarr"
   - format: "tiff"
-    url: "https://platform.qim.dk/qim-public/escargot/escargot.tif"
+    url: "https://public.qim.dk/escargot/escargot.tif"
 ---

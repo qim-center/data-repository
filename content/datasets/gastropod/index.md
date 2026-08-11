@@ -15,7 +15,7 @@ contributors: []
 
 volumes:
   - format: "zarr"
-    url: "https://platform.qim.dk/qim-public/gastropod/gastropod.zarr"
+    url: "https://public.qim.dk/gastropod/gastropod.zarr"
   - format: "tiff"
-    url: "https://platform.qim.dk/qim-public/gastropod/gastropod.tif"
+    url: "https://public.qim.dk/gastropod/gastropod.tif"
 ---
