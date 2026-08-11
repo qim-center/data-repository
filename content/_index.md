@@ -1,6 +1,6 @@
 ---
 title: Qim Data Repository
-summary: a collection of 3D datasets
+summary: Collection of free volumetric 3D datasets in the OME-Zarr standard.
 layout: home
 menus:
   main:

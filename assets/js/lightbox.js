@@ -8,7 +8,7 @@ const gallery = document.getElementById("gallery");
 if (gallery) {
   const lightbox = new PhotoSwipeLightbox({
     gallery,
-    children: ".gallery-item",
+    children: ".gallery-item:not([hidden])",
     showHideAnimationType: "zoom",
     bgOpacity: 1,
     pswpModule: PhotoSwipe,
@@ -51,7 +51,9 @@ if (gallery) {
   });
 
   lightbox.on("close", () => {
-    history.replaceState("", document.title, window.location.pathname);
+    const url = new URL(window.location.href);
+    url.hash = "";
+    history.replaceState("", document.title, url);
   });
 
   new PhotoSwipeDynamicCaption(lightbox, {
@@ -64,7 +66,7 @@ if (gallery) {
 
   if (window.location.hash.substring(1).length > 1) {
     const target = window.location.hash.substring(1);
-    const items = gallery.querySelectorAll("a");
+    const items = gallery.querySelectorAll(".gallery-item:not([hidden])");
     for (let i = 0; i < items.length; i++) {
       if (items[i].dataset["pswpTarget"] === target) {
         lightbox.loadAndOpen(i, { gallery });
