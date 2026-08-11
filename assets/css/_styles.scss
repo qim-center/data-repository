@@ -291,6 +291,10 @@ section.gallery {
   padding: 0 1.5rem;
 }
 
+.gallery-pagination[hidden] {
+  display: none;
+}
+
 .gallery-pagination__button {
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -622,6 +626,10 @@ section.gallery {
   flex-direction: column;
   border-radius: 1rem;
 
+  &[hidden] {
+    display: none;
+  }
+
   & > figure,
   & > a > figure {
     display: flex;
@@ -811,18 +819,18 @@ nav.categories {
 
       & > a {
         display: block;
-        padding: 0.5rem 0.75rem;
+        padding: 0.375rem 0.625rem;
         border-radius: 9999px;
         border: 1px solid var(--border);
-        font-size: 0.875rem;
+        // font-size: 0.5rem;
         line-height: 1.4286;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
 
         @media (min-width: 640px) {
-          padding: 0.75rem 1rem;
-          font-size: 1rem;
+          padding: 0.5rem 0.75rem;
+          font-size: 0.875rem;
           line-height: 1.25;
         }
       }
@@ -844,7 +852,7 @@ nav.card-categories {
 
     li > a {
       padding: 0.25rem 0.5rem;
-      font-size: 0.75rem;
+      // font-size: 0.5rem;
       line-height: 1.4286;
     }
   }
