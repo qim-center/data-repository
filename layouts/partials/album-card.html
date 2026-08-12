@@ -60,7 +60,7 @@
           <nav class="categories card-categories">
             <ul>
               {{ range . }}
-                <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+                <li><a href="{{ .RelPermalink }}" style="border-color: {{ partial "colormap-color.html" .Data.Term }}">{{ .LinkTitle }}</a></li>
               {{ end }}
             </ul>
           </nav>
