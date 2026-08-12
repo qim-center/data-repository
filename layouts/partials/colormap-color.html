@@ -1,0 +1,11 @@
+{{ $colormaps := site.Params.colormaps | default dict }}
+{{ $colormap := $colormaps.default | default "viridis" }}
+{{ with index $colormaps . }}
+  {{ $colormap = . }}
+{{ end }}
+{{ $colors := site.Params.colormapColors | default dict }}
+{{ $color := $colors.default | default "#6b7280" }}
+{{ with index $colors $colormap }}
+  {{ $color = . }}
+{{ end }}
+{{ return $color }}

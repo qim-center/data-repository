@@ -1,8 +1,10 @@
 {{ with site.Taxonomies.categories }}
   <nav class="categories">
     <ul>
-      {{ range . }}
-        <li><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></li>
+      {{ range $term, $pages := . }}
+        <li>
+          <a href="{{ .Page.RelPermalink }}" style="border-color: {{ partial "colormap-color.html" $term }}">{{ .Page.Title }}</a>
+        </li>
       {{ end }}
     </ul>
   </nav>

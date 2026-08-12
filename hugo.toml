@@ -5,3 +5,27 @@ title = 'Qim Data Repository'
 [params]
   defaultTheme = 'light'
 #  viz-base-url = 'http://localhost:5173/public/index.html'
+
+# Colormap per category. Valid values: viridis, plasma, inferno, magma, cividis, grayscale.
+# A dataset's colormap is the last category in its front matter that has an entry here.
+# The default is used when no category matches.
+[params.colormaps]
+  default = 'viridis'
+  animal = 'magma'
+  fruit = 'plasma'
+  manufactured = 'cividis'
+  marine = 'viridis'
+  mineral = 'inferno'
+  plant = 'grayscale'
+  unicellular = 'cividis'
+
+# Representative color for each colormap, used to tint category pill borders.
+# Tweak these to taste; they only matter for the category pill outlines.
+[params.colormapColors]
+  default = '#2f3134'
+  viridis = '#23c952'
+  plasma = '#ec4899'
+  inferno = '#f94f16'
+  magma = '#f75555'
+  cividis = '#c7c002'
+  grayscale = '#6b7280'

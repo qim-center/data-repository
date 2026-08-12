@@ -1,6 +1,7 @@
 {{ $gallery := partial "get-gallery.html" . }}
 {{ with $gallery }}
   {{ $vizViewerBaseUrl := index site.Params "viz-base-url" | default "https://viz.qim.dk/" }}
+  {{ $colormap := partial "colormap.html" .page }}
   {{ $zarrUrl := "" }}
   {{ $metadataTags := slice }}
   {{ with .page.Params.volumes }}
@@ -24,7 +25,7 @@
         <img class="lazyload" width="{{ .Width }}" height="{{ .Height }}" data-src="{{ .RelPermalink }}" alt="{{ $.Title }}" />
       {{ else }}
         {{ with $zarrUrl }}
-          {{ $cardViewerSrc := printf "%s?src=%s&scale=last&hidden=true&turntable=true" $vizViewerBaseUrl (. | urlquery) }}
+          {{ $cardViewerSrc := printf "%s?src=%s&scale=last&hidden=true&turntable=true&colormap=%s" $vizViewerBaseUrl (. | urlquery) $colormap }}
           <iframe
             class="card-preview-iframe"
             data-card-iframe-src="{{ $cardViewerSrc }}"
@@ -59,7 +60,7 @@
           <nav class="categories card-categories">
             <ul>
               {{ range . }}
-                <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+                <li><a href="{{ .RelPermalink }}" style="border-color: {{ partial "colormap-color.html" .Data.Term }}">{{ .LinkTitle }}</a></li>
               {{ end }}
             </ul>
           </nav>
