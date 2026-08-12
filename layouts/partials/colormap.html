@@ -1,0 +1,8 @@
+{{ $colormaps := site.Params.colormaps | default dict }}
+{{ $colormap := $colormaps.default | default "viridis" }}
+{{ range .Params.categories }}
+  {{ with index $colormaps . }}
+    {{ $colormap = . }}
+  {{ end }}
+{{ end }}
+{{ return $colormap }}
