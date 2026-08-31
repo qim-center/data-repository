@@ -1,6 +1,6 @@
 ---
 title: 'Physalis'
-categories: ["plant", "fruit"]
+categories: ["plant"]
 description: |
   A detailed description of the dataset.
   Include:
