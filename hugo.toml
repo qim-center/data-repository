@@ -11,13 +11,9 @@ title = 'Qim Data Repository'
 # The default is used when no category matches.
 [params.colormaps]
   default = 'viridis'
-  animal = 'magma'
-  fruit = 'plasma'
-  manufactured = 'cividis'
-  marine = 'viridis'
-  mineral = 'inferno'
-  plant = 'grayscale'
-  unicellular = 'cividis'
+  animal = 'plasma'
+  material = 'cividis'
+  plant = 'viridis'
 
 # Representative color for each colormap, used to tint category pill borders.
 # Tweak these to taste; they only matter for the category pill outlines.
