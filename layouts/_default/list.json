@@ -1,0 +1,28 @@
+{{- $datasets := slice -}}
+{{- range where .RegularPagesRecursive "Params.private" "ne" true -}}
+  {{- $license := .Params.license | default nil -}}
+  {{- $contributors := .Params.contributors | default (slice) -}}
+  {{- $volumes := slice -}}
+  {{- range .Params.volumes -}}
+    {{- $url := .url | default nil -}}
+    {{- $volumes = $volumes | append (dict
+      "format" .format
+      "url" $url
+    ) -}}
+  {{- end -}}
+  {{- $datasets = $datasets | append (dict
+    "id" (.Params.id | default (path.Base (strings.Trim .RelPermalink "/")))
+    "title" .Title
+    "summary" (.Params.summary | default nil)
+    "description" (.Params.description | default nil)
+    "categories" (.Params.categories | default (slice))
+    "license" $license
+    "contributors" $contributors
+    "page_url" .RelPermalink
+    "volumes" $volumes
+  ) -}}
+{{- end -}}
+{{- dict
+  "schema_version" 1
+  "datasets" $datasets
+  | jsonify -}}
