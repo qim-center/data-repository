@@ -1,6 +1,6 @@
 ---
 title: 'Rope'
-categories: ["manufactured"]
+categories: ["material"]
 description: |
   A detailed description of the dataset.
   Include:

@@ -1,6 +1,6 @@
 ---
 title: 'Mussel'
-categories: ["animal", "marine"]
+categories: ["animal"]
 description: |
   A detailed description of the dataset.
   Include:

@@ -1,6 +1,6 @@
 ---
 title: 'Coal Briquette'
-categories: ["mineral"]
+categories: ["material"]
 description: |
   A detailed description of the dataset.
   Include:

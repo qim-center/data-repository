@@ -1,6 +1,6 @@
 ---
 title: 'Kiwi'
-categories: ["fruit"]
+categories: ["plant"]
 description: |
   A detailed description of the dataset.
   Include:

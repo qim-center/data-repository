@@ -1,6 +1,6 @@
 ---
 title: 'Foram Okinawa'
-categories: ["unicellular", "marine"]
+categories: ["animal"]
 description: |
   A detailed description of the dataset.
   Include:
