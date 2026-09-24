@@ -57,3 +57,14 @@ function initCodeCopyButtons() {
 }
 
 initCodeCopyButtons();
+
+function initBackLink() {
+	const link = document.querySelector("[data-back-link]");
+
+	link.addEventListener("click", (event) => {
+
+		history.back();
+	});
+}
+
+initBackLink();
