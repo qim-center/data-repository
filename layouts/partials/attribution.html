@@ -1,0 +1,60 @@
+{{ $license := partial "license.html" . }}
+{{ $authors := delimit (.Params.authors | default slice) ", " " and " }}
+
+{{ $text := printf "\"%s\" (%s)" .Title .Permalink }}
+{{ $html := printf "\"<a href=\"%s\">%s</a>\"" .Permalink (htmlEscape .Title) }}
+{{ with $authors }}
+  {{ $text = printf "%s by %s" $text . }}
+  {{ $html = printf "%s by %s" $html (htmlEscape .) }}
+{{ end }}
+{{ with $license }}
+  {{ $licenseText := .id }}
+  {{ $licenseHtml := .id }}
+  {{ with .url }}
+    {{ $licenseText = printf "%s (%s)" $licenseText . }}
+    {{ $licenseHtml = printf "<a href=\"%s\">%s</a>" . $licenseHtml }}
+  {{ end }}
+  {{ $text = printf "%s is licensed under %s" $text $licenseText }}
+  {{ $html = printf "%s is licensed under %s" $html $licenseHtml }}
+{{ end }}
+
+<h3>License &amp; Attribution</h3>
+
+<dl class="attribution-details">
+  {{ with $authors }}
+    <dt>Authors</dt>
+    <dd>{{ . }}</dd>
+  {{ end }}
+  {{ with $license }}
+    <dt>License</dt>
+    <dd>
+      {{ if .url }}
+        <a href="{{ .url }}" rel="license noopener" target="_blank">{{ .id }}</a>
+      {{ else }}
+        {{ .id }}
+      {{ end }}
+      {{ with .name }}({{ . }}){{ end }}
+    </dd>
+  {{ end }}
+</dl>
+
+{{ if $license }}
+  <p class="attribution-text">
+    "<a href="{{ .Permalink }}">{{ .Title }}</a>"
+    {{ with $authors }}by {{ . }}{{ end }}
+    is licensed under
+    {{ with $license.url }}
+      <a href="{{ . }}" rel="license noopener" target="_blank">{{ $license.id }}</a>
+    {{ else }}
+      {{ $license.id }}
+    {{ end }}
+    <button
+      type="button"
+      class="code-copy"
+      title="Copy attribution"
+      aria-label="Copy attribution"
+      hidden
+      data-copy-attribution="{{ $text }}"
+      data-copy-attribution-html="{{ $html }}"></button>
+  </p>
+{{ end }}
