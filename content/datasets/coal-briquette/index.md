@@ -10,7 +10,7 @@ description: |
   - Processing steps
   - Usage notes
 summary: "Coal briquette from a bag of BBQ coal"
-license: ""
+license: "CC-BY-4.0"
 contributors: []
 
 volumes:

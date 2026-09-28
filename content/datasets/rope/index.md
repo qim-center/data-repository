@@ -10,7 +10,7 @@ description: |
   - Processing steps
   - Usage notes
 summary: "Piece of synthetic rope bought in Denmark. "
-license: ""
+license: "CC-BY-4.0"
 contributors: []
 
 volumes:

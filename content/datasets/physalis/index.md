@@ -10,7 +10,7 @@ description: |
   - Processing steps
   - Usage notes
 summary: "Physalis fruit with husk. "
-license: ""
+license: "CC-BY-4.0"
 contributors: []
 
 volumes:

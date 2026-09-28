@@ -10,7 +10,7 @@ description: |
   - Processing steps
   - Usage notes
 summary: "top part of a staghorn coral. "
-license: ""
+license: "CC-BY-4.0"
 contributors: []
 
 volumes:

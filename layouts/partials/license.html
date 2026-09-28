@@ -1,0 +1,6 @@
+{{- $license := dict -}}
+{{- with .Params.license | default site.Params.defaultLicense -}}
+  {{- $info := index site.Params.licenses (lower .) | default dict -}}
+  {{- $license = dict "id" . "name" ($info.name | default nil) "url" ($info.url | default nil) -}}
+{{- end -}}
+{{- return $license -}}

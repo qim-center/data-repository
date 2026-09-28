@@ -10,7 +10,7 @@ description: |
   - Processing steps
   - Usage notes
 summary: "Small crab thorax with some legs attached."
-license: ""
+license: "CC-BY-4.0"
 contributors: []
 
 volumes:

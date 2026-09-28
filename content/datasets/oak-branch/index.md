@@ -10,7 +10,7 @@ description: |
   - Processing steps
   - Usage notes
 summary: "Small oak branch from DTU Campus."
-license: ""
+license: "CC-BY-4.0"
 contributors: []
 
 volumes:

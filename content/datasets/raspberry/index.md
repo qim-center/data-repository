@@ -10,7 +10,7 @@ description: |
   - Processing steps
   - Usage notes
 summary: "Wild raspberry found on DTU campus (Denmark). "
-license: ""
+license: "CC-BY-4.0"
 contributors: []
 
 volumes:

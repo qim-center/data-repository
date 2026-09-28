@@ -10,7 +10,7 @@ description: |
   - Processing steps
   - Usage notes
 summary: "Vacuum packed closed clam from an (expired) instant soup."
-license: ""
+license: "CC-BY-4.0"
 contributors: []
 
 volumes:

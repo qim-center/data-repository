@@ -10,7 +10,7 @@ description: |
   - Processing steps
   - Usage notes
 summary: "Part of a dried cucumber like vegetable used as scrubbing sponge"
-license: ""
+license: "CC-BY-4.0"
 contributors: []
 
 volumes:

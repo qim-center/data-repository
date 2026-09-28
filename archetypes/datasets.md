@@ -10,7 +10,7 @@ description: |
   - Resolution
   - Processing steps
   - Usage notes
-license: ""
+license: "CC-BY-4.0"
 contributors: []
 
 volumes:

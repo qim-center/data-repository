@@ -5,6 +5,7 @@ title = 'Qim Data Repository'
 [params]
   defaultTheme = 'light'
 #  viz-base-url = 'http://localhost:5173/public/index.html'
+  defaultLicense = 'CC-BY-4.0'
 
 # Colormap per category. Valid values: viridis, plasma, inferno, magma, cividis, grayscale.
 # A dataset's colormap is the last category in its front matter that has an entry here.
@@ -25,3 +26,7 @@ title = 'Qim Data Repository'
   magma = '#f75555'
   cividis = '#c7c002'
   grayscale = '#6b7280'
+
+[params.licenses.'CC-BY-4.0']
+  name = 'Creative Commons Attribution 4.0 International'
+  url = 'https://creativecommons.org/licenses/by/4.0/'

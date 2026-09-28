@@ -10,7 +10,7 @@ description: |
   - Processing steps
   - Usage notes
 summary: "A small Kiwi fruit"
-license: ""
+license: "CC-BY-4.0"
 contributors: []
 
 volumes:

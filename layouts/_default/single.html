@@ -17,6 +17,20 @@
         {{ partial "downloads.html" . }}
       </section>
 
+      {{ with partial "license.html" . }}
+        <section class="dataset-single-layout__license">
+          <h3>License</h3>
+          <p>
+            {{ if .url }}
+              <a href="{{ .url }}" rel="license noopener" target="_blank">{{ .id }}</a>
+            {{ else }}
+              {{ .id }}
+            {{ end }}
+            {{ with .name }}({{ . }}){{ end }}
+          </p>
+        </section>
+      {{ end }}
+
       {{ $zarrVolumes := where .Params.volumes "format" "zarr" }}
       {{ range first 1 $zarrVolumes }}
         {{ if .url }}

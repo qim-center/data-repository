@@ -10,7 +10,7 @@ description: |
   - Processing steps
   - Usage notes
 summary: "Shell of a unicellular marine organism. "
-license: ""
+license: "CC-BY-4.0"
 contributors: []
 
 volumes:
