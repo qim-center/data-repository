@@ -11,7 +11,7 @@ description: |
   - Usage notes
 summary: "Coal briquette from a bag of BBQ coal"
 license: "CC-BY-4.0"
-contributors: []
+authors: ["Qim Center"]
 
 volumes:
   - format: "zarr"

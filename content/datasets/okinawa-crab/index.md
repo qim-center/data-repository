@@ -11,7 +11,7 @@ description: |
   - Usage notes
 summary: "Small crab thorax with some legs attached."
 license: "CC-BY-4.0"
-contributors: []
+authors: ["Qim Center"]
 
 volumes:
   - format: "zarr"

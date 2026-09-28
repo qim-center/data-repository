@@ -11,7 +11,7 @@ description: |
   - Usage notes
 summary: "The top part of a staghorn coral."
 license: "CC-BY-4.0"
-contributors: []
+authors: ["Qim Center"]
 
 volumes:
   - format: "zarr"

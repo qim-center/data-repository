@@ -11,7 +11,7 @@ description: |
   - Usage notes
 summary: "Vacuum packed closed clam from an (expired) instant soup."
 license: "CC-BY-4.0"
-contributors: []
+authors: ["Qim Center"]
 
 volumes:
   - format: "zarr"

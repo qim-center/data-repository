@@ -11,7 +11,7 @@ description: |
   - Usage notes
 summary: "Part of a dried cucumber like vegetable used as scrubbing sponge"
 license: "CC-BY-4.0"
-contributors: []
+authors: ["Qim Center"]
 
 volumes:
   - format: "zarr"

@@ -5,7 +5,7 @@ description: |
   Snail from a pack of butter filled escargot after being heated. Sample was bought in Denmark. 
 summary: "A type of snail that people eat"
 license: "CC-BY-4.0"
-contributors: ["QIM"]
+authors: ["Qim Center"]
 
 volumes:
   - format: "zarr"

@@ -11,7 +11,7 @@ description: |
   - Usage notes
 summary: "Piece of synthetic rope bought in Denmark. "
 license: "CC-BY-4.0"
-contributors: []
+authors: ["Qim Center"]
 
 volumes:
   - format: "zarr"

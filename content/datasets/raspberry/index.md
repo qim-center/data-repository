@@ -11,7 +11,7 @@ description: |
   - Usage notes
 summary: "Wild raspberry found on DTU campus (Denmark). "
 license: "CC-BY-4.0"
-contributors: []
+authors: ["Qim Center"]
 
 volumes:
   - format: "zarr"

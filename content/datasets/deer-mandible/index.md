@@ -11,7 +11,7 @@ description: |
   - Usage notes
 summary: "Mandible (jaw bone) of deer with some teeth. "
 license: "CC-BY-4.0"
-contributors: []
+authors: ["Qim Center"]
 
 volumes:
   - format: "zarr"

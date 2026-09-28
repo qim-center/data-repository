@@ -11,7 +11,7 @@ description: |
   - Usage notes
 summary: "Small oak branch from DTU Campus."
 license: "CC-BY-4.0"
-contributors: []
+authors: ["Qim Center"]
 
 volumes:
   - format: "zarr"

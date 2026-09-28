@@ -11,7 +11,7 @@ description: |
   - Usage notes
 summary: "Physalis fruit with husk. "
 license: "CC-BY-4.0"
-contributors: []
+authors: ["Qim Center"]
 
 volumes:
   - format: "zarr"
