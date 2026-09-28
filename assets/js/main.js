@@ -56,7 +56,45 @@ function initCodeCopyButtons() {
 	}
 }
 
+function initAttributionCopyButtons() {
+	if (!navigator.clipboard?.writeText) {
+		return;
+	}
+
+	for (const button of document.querySelectorAll("[data-copy-attribution]")) {
+		const text = button.dataset.copyAttribution;
+		const html = button.dataset.copyAttributionHtml;
+		const label = button.title;
+
+		button.innerHTML = `${copyIcon}`;
+		button.hidden = false;
+		button.addEventListener("click", async () => {
+			const copy =
+				html && window.ClipboardItem
+					? navigator.clipboard.write([
+							new ClipboardItem({
+								"text/html": new Blob([html], { type: "text/html" }),
+								"text/plain": new Blob([text], { type: "text/plain" }),
+							}),
+						])
+					: navigator.clipboard.writeText(text);
+			await copy.catch(() => navigator.clipboard.writeText(text)).catch(() => {});
+
+			button.innerHTML = `${checkIcon}`;
+			button.title = "Copied";
+			button.setAttribute("aria-label", "Copied");
+
+			window.setTimeout(() => {
+				button.innerHTML = `${copyIcon}`;
+				button.title = label;
+				button.setAttribute("aria-label", label);
+			}, 3000);
+		});
+	}
+}
+
 initCodeCopyButtons();
+initAttributionCopyButtons();
 
 function initBackLink() {
 	const link = document.querySelector("[data-back-link]");

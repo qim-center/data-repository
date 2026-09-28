@@ -983,6 +983,41 @@ a.downloads-action {
   cursor: not-allowed;
 }
 
+.attribution-details {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 0.75rem;
+  margin: 0 0 0.75rem;
+
+  dt {
+    color: var(--text-2);
+  }
+
+  dd {
+    margin: 0;
+  }
+}
+
+.attribution-text {
+  position: relative;
+  margin: 0 0 0.75rem;
+  border-left: 3px solid var(--border);
+  padding: 0.5rem 3.25rem 0.5rem 0.75rem;
+  min-height: 3rem;
+  background-color: color-mix(in srgb, var(--surface-2) 40%, var(--surface-1));
+  font-size: 0.875rem;
+
+  .code-copy {
+    top: 0.5rem;
+    right: 0.5rem;
+    transform: none;
+
+    &[hidden] {
+      display: none;
+    }
+  }
+}
+
 .downloads-guide-text {
   margin-top: 0.4rem;
   margin-bottom: 0;

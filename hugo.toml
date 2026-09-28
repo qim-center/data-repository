@@ -1,4 +1,4 @@
-baseURL = 'https://localhost/'
+baseURL = 'https://data-repository.qim.dk/'
 languageCode = 'en-us'
 title = 'Qim Data Repository'
 
@@ -30,3 +30,23 @@ title = 'Qim Data Repository'
 [params.licenses.'CC-BY-4.0']
   name = 'Creative Commons Attribution 4.0 International'
   url = 'https://creativecommons.org/licenses/by/4.0/'
+
+[params.licenses.'CC-BY-SA-4.0']
+  name = 'Creative Commons Attribution-ShareAlike 4.0 International'
+  url = 'https://creativecommons.org/licenses/by-sa/4.0/'
+
+[params.licenses.'CC-BY-NC-4.0']
+  name = 'Creative Commons Attribution-NonCommercial 4.0 International'
+  url = 'https://creativecommons.org/licenses/by-nc/4.0/'
+
+[params.licenses.'CC-BY-NC-SA-4.0']
+  name = 'Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International'
+  url = 'https://creativecommons.org/licenses/by-nc-sa/4.0/'
+
+[params.licenses.'CC-BY-ND-4.0']
+  name = 'Creative Commons Attribution-NoDerivatives 4.0 International'
+  url = 'https://creativecommons.org/licenses/by-nd/4.0/'
+
+[params.licenses.'CC-BY-NC-ND-4.0']
+  name = 'Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International'
+  url = 'https://creativecommons.org/licenses/by-nc-nd/4.0/'
