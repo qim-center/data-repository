@@ -1,7 +1,7 @@
 {{- $datasets := slice -}}
 {{- range where .RegularPagesRecursive "Params.private" "ne" true -}}
-  {{- $license := .Params.license | default nil -}}
-  {{- $contributors := .Params.contributors | default (slice) -}}
+  {{- $license := partial "license.html" . -}}
+  {{- $authors := .Params.authors | default (slice) -}}
   {{- $volumes := slice -}}
   {{- range .Params.volumes -}}
     {{- $url := .url | default nil -}}
@@ -16,13 +16,15 @@
     "summary" (.Params.summary | default nil)
     "description" (.Params.description | default nil)
     "categories" (.Params.categories | default (slice))
-    "license" $license
-    "contributors" $contributors
+    "license" $license.id
+    "license_name" $license.name
+    "license_url" $license.url
+    "authors" $authors
     "page_url" .RelPermalink
     "volumes" $volumes
   ) -}}
 {{- end -}}
 {{- dict
-  "schema_version" 1
+  "schema_version" 2
   "datasets" $datasets
   | jsonify -}}

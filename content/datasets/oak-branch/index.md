@@ -10,8 +10,8 @@ description: |
   - Processing steps
   - Usage notes
 summary: "Small oak branch from DTU Campus."
-license: ""
-contributors: []
+license: "CC-BY-4.0"
+authors: ["Qim Center"]
 
 volumes:
   - format: "zarr"

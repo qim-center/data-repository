@@ -10,8 +10,8 @@ description: |
   - Processing steps
   - Usage notes
 summary: "Shell of a unicellular marine organism. "
-license: ""
-contributors: []
+license: "CC-BY-4.0"
+authors: ["Qim Center"]
 
 volumes:
   - format: "zarr"

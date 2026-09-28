@@ -17,6 +17,10 @@
         {{ partial "downloads.html" . }}
       </section>
 
+      <section>
+        {{ partial "attribution.html" . }}
+      </section>
+
       {{ $zarrVolumes := where .Params.volumes "format" "zarr" }}
       {{ range first 1 $zarrVolumes }}
         {{ if .url }}

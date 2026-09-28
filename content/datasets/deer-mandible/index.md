@@ -10,8 +10,8 @@ description: |
   - Processing steps
   - Usage notes
 summary: "Mandible (jaw bone) of deer with some teeth. "
-license: ""
-contributors: []
+license: "CC-BY-4.0"
+authors: ["Qim Center"]
 
 volumes:
   - format: "zarr"

@@ -10,8 +10,8 @@ description: |
   - Processing steps
   - Usage notes
 summary: "Physalis fruit with husk. "
-license: ""
-contributors: []
+license: "CC-BY-4.0"
+authors: ["Qim Center"]
 
 volumes:
   - format: "zarr"

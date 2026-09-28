@@ -31,5 +31,5 @@ The `index.md` file should follow the template in `archetypes/datasets.md`, whic
    your-dataset-name/index.md
    ```
 
-5. Paste the template and fill in all fields. In `volumes`, include the URLs to your dataset files. (If you cannot host the data, [contact us](/about/#contact).)
+5. Paste the template and fill in all fields. In `volumes`, include the URLs to your dataset files. (If you cannot host the data, [contact us](/about/#contact).) The `license` field defaults to `CC-BY-4.0` ([Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/)).
 6. Commit changes, create a new branch and start a pull request.

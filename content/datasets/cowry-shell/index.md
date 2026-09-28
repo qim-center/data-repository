@@ -10,8 +10,8 @@ description: |
   - Processing steps
   - Usage notes
 summary: " Shell of a cowry sea snail from Okinawa, Japan"
-license: ""
-contributors: []
+license: "CC-BY-4.0"
+authors: ["Qim Center"]
 
 volumes:
   - format: "zarr"
