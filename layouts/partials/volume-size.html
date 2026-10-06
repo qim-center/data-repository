@@ -1,6 +1,7 @@
 {{ $format := lower (.format | default "") }}
 {{ $url := .url | default "" }}
 {{ $result := "" }}
+{{ $totalBytes := 0 }}
 {{ if and (eq $format "zarr") $url }}
   {{ $baseUrl := replaceRE "/+$" "" $url }}
   {{ $bytesPerElement := 0 }}
@@ -56,19 +57,31 @@
   {{ end }}
 
   {{ if and (gt $bytesPerElement 0) (gt $elementCount 0) }}
-    {{ $totalBytes := mul $elementCount $bytesPerElement }}
-    {{ if .bytes }}
-      {{/* Raw byte count */}}
-      {{ $result = printf "%d" $totalBytes }}
-    {{ else if ge $totalBytes 1073741824 }}
-      {{ $result = printf "%.2f GB" (div (float $totalBytes) 1000000000.0) }}
-    {{ else if ge $totalBytes 1048576 }}
-      {{ $result = printf "%.2f MB" (div (float $totalBytes) 1000000.0) }}
-    {{ else if ge $totalBytes 1024 }}
-      {{ $result = printf "%.2f KB" (div (float $totalBytes) 1000.0) }}
-    {{ else }}
-      {{ $result = printf "%.2f B" (float $totalBytes) }}
+    {{ $totalBytes = mul $elementCount $bytesPerElement }}
+  {{ end }}
+{{ else if and (eq $format "tiff") $url }}
+  {{/* Do a HEAD request to return its size without downloading it */}}
+  {{ with try (resources.GetRemote $url (dict "method" "head")) }}
+    {{ with .Value }}
+      {{ if gt .Data.ContentLength 0 }}
+        {{ $totalBytes = int .Data.ContentLength }}
+      {{ end }}
     {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ if gt $totalBytes 0 }}
+  {{ if .bytes }}
+    {{/* Raw byte count */}}
+    {{ $result = printf "%d" $totalBytes }}
+  {{ else if ge $totalBytes 1073741824 }}
+    {{ $result = printf "%.2f GB" (div (float $totalBytes) 1000000000.0) }}
+  {{ else if ge $totalBytes 1048576 }}
+    {{ $result = printf "%.2f MB" (div (float $totalBytes) 1000000.0) }}
+  {{ else if ge $totalBytes 1024 }}
+    {{ $result = printf "%.2f KB" (div (float $totalBytes) 1000.0) }}
+  {{ else }}
+    {{ $result = printf "%.2f B" (float $totalBytes) }}
   {{ end }}
 {{ end }}
 {{- $result -}}

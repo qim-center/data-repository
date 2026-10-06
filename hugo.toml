@@ -25,3 +25,6 @@ title = 'Qim Data Repository'
   magma = '#f75555'
   cividis = '#c7c002'
   grayscale = '#6b7280'
+
+[security.http]
+  methods = ['(?i)GET|POST|HEAD']
