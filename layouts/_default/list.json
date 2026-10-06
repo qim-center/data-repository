@@ -5,9 +5,14 @@
   {{- $volumes := slice -}}
   {{- range .Params.volumes -}}
     {{- $url := .url | default nil -}}
+    {{- $sizeBytes := 0 -}}
+    {{- with partial "volume-size.html" (dict "format" .format "url" .url "bytes" true) | strings.TrimSpace -}}
+      {{- $sizeBytes = int . -}}
+    {{- end -}}
     {{- $volumes = $volumes | append (dict
       "format" .format
       "url" $url
+      "size_bytes" ($sizeBytes | default nil)
     ) -}}
   {{- end -}}
   {{- $datasets = $datasets | append (dict
